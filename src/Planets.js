@@ -21,9 +21,6 @@ const plutoTexture = textureLoader.load("./src/assets/textures/plutomap1k.jpg");
 
 // models
 const loader = new GLTFLoader();
-const astroideModel = await loader.loadAsync(
-    "./src/assets/models/astroide/scene.gltf",
-);
 
 export const Stars = () => {
     const geometry = new THREE.SphereGeometry(600);
@@ -183,6 +180,10 @@ export const AstroBelt = async () => {
 
     const numberOfRings = 25;
     const radius = 90;
+
+    const astroideModel = await loader.loadAsync(
+        "./src/assets/models/astroide/scene.gltf",
+    );
     // Iterate over each sphere
     for (let n = 0; n < numberOfRings; n += 1) {
         const numberOfSpheres = 100 + Math.round(Math.random() * 100);
@@ -225,7 +226,7 @@ export const JupiterGroup = () => {
     return jupiterGroup;
 }
 
-export const SaturnGroup = () => {
+export const SaturnGroup = async() => {
     const saturnGroup = new THREE.Group();
     saturnGroup.position.set(-140, 0, 0);
 
@@ -245,6 +246,10 @@ export const SaturnGroup = () => {
 
     const ringGroup = new THREE.Group();
     ringGroup.position.set(0, -0.1, 0);
+
+    const astroideModel = await loader.loadAsync(
+        "./src/assets/models/astroide/scene.gltf",
+    );
 
     const radius = 5; // Radius of the ring
     // Iterate over each sphere

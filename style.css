@@ -261,7 +261,7 @@ nav li {
     max-width: 800px;
     min-width: 200px;
     max-height: 350px;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: fit-content;
     right: 0px;
     bottom: 0px;
