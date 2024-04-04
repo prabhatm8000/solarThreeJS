@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+        <title>Vite App</title>
+    </head>
+    <body>
+        <nav>
+            <a id="navTitle"></a>
+            <ul>
+                <li id="gotoBtn">GoTo</li>
+            </ul>
+        </nav>
+
+        <!-- display will be changed to flex when this btn is clicked (Controls.js) -->
+        <div id="planetBtns">
+            <button class="planet-btn" id="sun" value="0">Sun</button>
+            <button class="planet-btn" id="mercury" value="1">Mercury</button>
+            <button class="planet-btn" id="venus" value="2">Venus</button>
+            <button class="planet-btn" id="earth" value="3">Earth</button>
+            <button class="planet-btn" id="mars" value="4">Mars</button>
+            <button class="planet-btn" id="astroideBelt" value="5">
+                AstroideBelt
+            </button>
+            <button class="planet-btn" id="jupiter" value="6">Jupiter</button>
+            <button class="planet-btn" id="saturn" value="7">Saturn</button>
+            <button class="planet-btn" id="uranus" value="8">Uranus</button>
+            <button class="planet-btn" id="neptune" value="9">Neptune</button>
+            <button class="planet-btn" id="pluto" value="10">Pluto</button>
+        </div>
+
+        <div id="start">
+            <button id="exploreBtn">Explore</button>
+        </div>
+
+        <div id="detail" class="show">
+            <div id="props"></div>
+            <div id="desc"></div>
+        </div>
+
+        <div id="controls">
+            <div id="controls-txt">
+                <span>Scroll or pinch to zoom.</span>
+                <span>Click and drag to change camera angle.</span>
+                <span
+                    >Arrow up and Arrow down can be used as forward and
+                    backward.</span
+                >
+                <span>Open in desktop for best experience.</span>
+            </div>
+            <div id="controls-btns">
+                <button class="control-btn" id="detailsBtn">
+                    Hide Details
+                </button>
+                <button class="control-btn" id="nextBtn">
+                    <span class="material-symbols-outlined"> arrow_back </span>
+                </button>
+                <button class="control-btn" id="prevBtn">
+                    <span class="material-symbols-outlined">
+                        arrow_forward
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <script type="module" src="/main.js"></script>
+    </body>
+</html>

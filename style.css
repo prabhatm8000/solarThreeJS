@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --alpha-white1: #ffffff88;
+    --alpha-white2: #ffffffcc;
+    --alpha-black1: #000000aa;
+    --alpha-black2: #050505aa;
+    --alpha-trans1: #11111144;
+    --alpha-trans2: #22222277;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: var(--alpha-trans2);
+    border-radius: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: var(--alpha-white1);
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    user-select: none;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+nav {
+    color: white;
+    z-index: 2;
+    position: absolute;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100vw - 60px);
+    transform: translateY(-100%);
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 44px;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav li {
+    font-size: larger;
+}
+
+#gotoBtn {
+    cursor: pointer;
+}
+
+#planetBtns {
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    right: 28px;
+    top: 60px;
+    padding: 2px;
+    border-radius: 2px;
+    background-color: var(--alpha-black2);
+
+    height: 0;
+
+    transform: translateX(150%);
+    filter: blur(2px);
+    transition: transform 500ms, filter 600ms;
+}
+
+#planetBtns.show {
+    filter: blur(0px);
+    transform: translateX(0%);
+}
+
+.planet-btn {
+    padding: 6px 10px;
+    background-color: var(--alpha-black1);
+    border: none;
+    font-size: medium;
+    color: var(--alpha-white1);
+    cursor: pointer;
+}
+
+#start {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#start button {
+    display: inline-block;
+    color: var(--alpha-white1);
+    font-size: 64px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    background: transparent;
+    padding: 0px 40px;
+    border: 2px solid var(--alpha-white1);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: padding 0.8s;
+}
+
+#start button:hover {
+    color: #fff;
+    padding: 0px 60px;
+    border-color: #fff;
+}
+
+#start button:before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: -400px;
+    height: 400px;
+    width: 70px;
+    background: rgba(255, 255, 255, 0.4);
+    filter: blur(2px);
+    transform: rotate(45deg);
+}
+
+#start button:hover:before {
+    left: 400px;
+    transition: all 1s;
+}
+
+#start {
+    margin-bottom: 100px;
+}
+
+#detail {
+    position: absolute;
+    bottom: 80px;
+    width: calc(100vw - 40px);
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 10px;
+    color: var(--alpha-white2);
+    pointer-events: none;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+#detail.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#desc {
+    position: relative;
+    max-width: 600px;
+    min-width: 100px;
+    width: fit-content;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    text-align: right;
+}
+
+#props {
+    pointer-events: all;
+    position: relative;
+    max-width: 800px;
+    min-width: 200px;
+    max-height: 350px;
+    overflow-y: scroll;
+    width: fit-content;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--alpha-trans1);
+}
+
+.prop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    border-radius: 5px;
+    padding: 4px 7px;
+    font-size: small;
+    background-color: var(--alpha-trans1);
+}
+
+#controls {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100vw - 40px);
+    background-color: var(--alpha-trans1);
+    opacity: 0;
+}
+
+#controls-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.control-btn {
+    font-size: medium;
+    background-color: transparent;
+    padding: 6px 10px;
+    border: 1px solid var(--alpha-white1);
+    border-radius: 5px;
+    color: var(--alpha-white);
+    cursor: pointer;
+
+    /* for that weird bottom space in google icons */
+    display: flex;
+    align-items: center;
+}
+
+button:focus {
+    outline: none;
+}
+
+#controls-txt {
+    display: flex;
+    flex-direction: column;
+    color: var(--alpha-white2);
+    font-size: 10px;
+}
+
+#controls-txt span::before {
+    content: '\2022';
+    margin-right: 5px;
+}
