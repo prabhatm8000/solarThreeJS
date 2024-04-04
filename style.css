@@ -29,7 +29,6 @@
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    color: white;
     user-select: none;
 }
 
@@ -105,6 +104,73 @@ nav li {
     font-size: medium;
     color: var(--alpha-white1);
     cursor: pointer;
+}
+
+#loadingScreen {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+}
+
+/* HTML: <div class="loader"></div> */
+#loadingScreen .loader {
+    --s: 20px;
+
+    --_d: calc(0.353*var(--s));
+    width: calc(var(--s) + var(--_d));
+    aspect-ratio: 1;
+    display: grid;
+}
+
+#loadingScreen .loader:before,
+#loadingScreen .loader:after {
+    content: "";
+    grid-area: 1/1;
+    clip-path: polygon(var(--_d) 0, 100% 0, 100% calc(100% - var(--_d)), calc(100% - var(--_d)) 100%, 0 100%, 0 var(--_d));
+    background:
+        conic-gradient(from -90deg at calc(100% - var(--_d)) var(--_d),
+            #fff 135deg, #666 0 270deg, #aaa 0);
+    animation: l6 2s infinite;
+}
+
+#loadingScreen .loader:after {
+    animation-delay: -1s;
+}
+
+@keyframes l6 {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(30px, 0)
+    }
+
+    50% {
+        transform: translate(30px, 30px)
+    }
+
+    75% {
+        transform: translate(0, 30px)
+    }
+
+    100% {
+        transform: translate(0, 0)
+    }
+}
+
+#loadingScreen .loadingTxt {
+    position: absolute;
+    transform: translateY(400%);
 }
 
 #start {
@@ -241,7 +307,7 @@ nav li {
     padding: 6px 10px;
     border: 1px solid var(--alpha-white1);
     border-radius: 5px;
-    color: var(--alpha-white);
+    color: var(--alpha-white2);
     cursor: pointer;
 
     /* for that weird bottom space in google icons */

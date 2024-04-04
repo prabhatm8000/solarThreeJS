@@ -87,6 +87,7 @@ window.addEventListener("resize", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 })
 
+const loadingScreen = document.getElementById('loadingScreen');
 // actual rendering is done here
 const render = () => {
     // can relate this to game loop
@@ -104,6 +105,7 @@ const render = () => {
     neptuneGroup.rotation.y += 0.001;
     plutoGroup.rotation.y += 0.001;
 
+    loadingScreen.style.display = 'none';
     renderer.render(scene, camera);
 }
 
