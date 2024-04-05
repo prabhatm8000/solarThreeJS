@@ -231,8 +231,8 @@ export function Controls(group, camera) {
         animationFlag = true;
         index = e;
         loadTextAudio(index);
-        playTextAudio();
         await tl.to(group.position, { x: (20 * index), y: 0, z: 0 });
+        playTextAudio();
         changeNavTitle(index);
         changeDetail(index);
         await cameraAnimation(index);
@@ -240,11 +240,11 @@ export function Controls(group, camera) {
     }
 
     const handleExploreBtn = async () => {
-        playBgMusic()
-        await tl.to("#exploreBtn", { opacity: 0 });
-        await moveByIndex(0);
-        tl.to("nav", { transform: "translateX(0%)" });
+        playBgMusic();
+        tl.to("#exploreBtn", { opacity: 0 });
         tl.to("#controls", { opacity: 1 });
+        tl.to("nav", { transform: "translateX(0%)" });
+        moveByIndex(0);
         exploreBtn.style.display = "none";
     }
 

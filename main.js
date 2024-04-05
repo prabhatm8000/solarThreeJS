@@ -55,7 +55,7 @@ async function loadingModelsAndObjects() {
     saturnGroup = await SaturnGroup();
     planets.add(saturnGroup);
 
-    uranusGroup = UranusGroup();
+    uranusGroup = await UranusGroup();
     planets.add(uranusGroup);
 
     neptuneGroup = NeptuneGroup();
@@ -72,7 +72,7 @@ loadingModelsAndObjects().then(() => {
     planets.position.set(0, -100, 0);
     scene.add(planets);
 
-    const light = new THREE.AmbientLight(0xffbf00, 0.1);
+    const light = new THREE.AmbientLight(0xffbf00, 0.05);
     light.position.set(0, 0, 10);
     scene.add(light);
 
@@ -118,7 +118,7 @@ loadingModelsAndObjects().then(() => {
         astroGroup.rotation.y -= 0.0001;
         jupiterGroup.rotation.y += 0.001;
         saturnGroup.rotation.y += 0.001;
-        uranusGroup.rotation.y += 0.001;
+        uranusGroup.rotation.x += 0.001;
         neptuneGroup.rotation.y += 0.001;
         plutoGroup.rotation.y += 0.001;
         renderer.render(scene, camera);

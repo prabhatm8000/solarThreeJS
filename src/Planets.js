@@ -2,19 +2,19 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { getGlow } from "./effects/glow";
 
-import starTextureImage from "./assets/textures/8k_stars.jpg";
-import sunTextureImage from "./assets/textures/8k_sun.jpg";
+import starTextureImage from "./assets/textures/2k_stars.jpg";
+import sunTextureImage from "./assets/textures/2k_sun.jpg";
 import mercuryTextureImage from "./assets/textures/mercurymap.jpg";
-import venusTextureImage from "./assets/textures/8k_venus.jpg";
-import earthTextureImage from "./assets/textures/8k_earth_daymap.jpg";
-import earthCloudTextureImage from "./assets/textures/8k_earth_clouds.jpg";
-import earthLightTextureImage from "./assets/textures/8k_earth_nightmap.jpg";
+import venusTextureImage from "./assets/textures/venusmap.jpg";
+import earthTextureImage from "./assets/textures/2k_earth_daymap.jpg";
+import earthCloudTextureImage from "./assets/textures/2k_earth_clouds.jpg";
+import earthLightTextureImage from "./assets/textures/2k_earth_nightmap.jpg";
 import moonTextureImage from "./assets/textures/moonmap1k.jpg";
-import marsTextureImage from "./assets/textures/8k_mars.jpg";
-import jupiterTextureImage from "./assets/textures/8k_jupiter.jpg";
-import saturnTextureImage from "./assets/textures/8k_saturn.jpg";
-import uranusTextureImage from "./assets/textures/2k_uranus.jpg";
-import neptuneTextureImage from "./assets/textures/2k_neptune.jpg";
+import marsTextureImage from "./assets/textures/marsmap1k.jpg";
+import jupiterTextureImage from "./assets/textures/jupitermap.jpg";
+import saturnTextureImage from "./assets/textures/saturnmap.jpg";
+import uranusTextureImage from "./assets/textures/uranusmap.jpg";
+import neptuneTextureImage from "./assets/textures/neptunemap.jpg";
 import plutoTextureImage from "./assets/textures/plutomap1k.jpg";
 
 // import astroideModelScene from "./assets/models/astroide/scene.gltf";
@@ -109,7 +109,7 @@ export const VenusGroup = () => {
     const venusMesh = new THREE.Mesh(geometry, material);
     venusGroup.add(venusMesh);
 
-    const glowMaterial = getGlow({ facingHex: 0xD2A05E, scale: 5.5 });
+    const glowMaterial = getGlow({ facingHex: 0xD2A05E, scale: 4 });
     const glowMesh = new THREE.Mesh(geometry, glowMaterial);
     glowMesh.scale.setScalar(1.5);
     venusGroup.add(glowMesh);
@@ -149,10 +149,10 @@ export const EarthGroup = () => {
     });
 
     const cloudsMesh = new THREE.Mesh(geometry, cloudsMaterial);
-    cloudsMesh.scale.set(1.01, 1.01, 1.01);
+    cloudsMesh.scale.set(1.02, 1.02, 1.02);
     earthGroup.add(cloudsMesh);
 
-    const glowMaterial = getGlow({ rimHex: 0x222222, facingHex: 0x5676B4, scale: 5.6 });
+    const glowMaterial = getGlow({ rimHex: 0x222222, facingHex: 0x5676B4, scale: 5.3 });
     const glowMesh = new THREE.Mesh(geometry, glowMaterial);
     glowMesh.scale.setScalar(1.5);
     earthGroup.add(glowMesh);
@@ -185,7 +185,7 @@ export const MarsGroup = () => {
     const marsMesh = new THREE.Mesh(geometry, material);
     marsGroup.add(marsMesh);
 
-    const glowMaterial = getGlow({ facingHex: 0xdb8254, scale: 5.5 });
+    const glowMaterial = getGlow({ facingHex: 0xdb8254, scale: 5.6 });
     const glowMesh = new THREE.Mesh(geometry, glowMaterial);
     glowMesh.scale.setScalar(1.5);
     marsGroup.add(glowMesh);
@@ -293,7 +293,7 @@ export const SaturnGroup = async () => {
     return saturnGroup;
 }
 
-export const UranusGroup = () => {
+export const UranusGroup = async () => {
     const uranusGroup = new THREE.Group();
     uranusGroup.position.set(-160, 0, 0);
 
@@ -312,7 +312,33 @@ export const UranusGroup = () => {
     glowMesh.scale.setScalar(1.5);
     uranusGroup.add(glowMesh);
 
+    const ringGroup = new THREE.Group();
+    ringGroup.position.set(0, -0.1, 0);
 
+    const astroideModel = await loader.loadAsync(
+        astroideModelScene
+    );
+
+    const radius = 3.5; // Radius of the ring
+    // Iterate over each sphere
+    for (let n = 1; n <= 2; n++) {
+        const numberOfSpheres = 200 + Math.round(Math.random() * 100);
+        for (let i = 0; i < numberOfSpheres; i++) {
+            const angle = (i / numberOfSpheres) * Math.PI * 2;
+
+            const x = Math.random() * 0.2;
+            const y = Math.cos(angle) * (radius + n * Math.random());
+            const z = Math.sin(angle) * (radius + n * Math.random());
+
+            const astroModel = new THREE.Group();
+            astroModel.position.set(x, y, z)
+            astroModel.scale.set(0.003, 0.003, 0.003);
+            astroModel.add(astroideModel.scene.clone());
+            ringGroup.add(astroModel);
+        }
+    }
+
+    uranusGroup.add(ringGroup)
     return uranusGroup;
 }
 
