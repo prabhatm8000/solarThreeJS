@@ -4,7 +4,7 @@ import { planetNames, planetsData, units } from "./data/planetsData";
 import { loadTextAudio, playBgMusic, playTextAudio, stopTextAudio } from "./effects/audios";
 
 gsap.registerPlugin(MotionPathPlugin);
-const tl = gsap.timeline({ defaults: { duration: 1 } });
+const tl = gsap.timeline({ defaults: { duration: 1.5 } });
 let animationFlag = false;
 const maxIndex = 10;
 let index = 0;

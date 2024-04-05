@@ -2,22 +2,41 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { getGlow } from "./effects/glow";
 
+import starTextureImage from "./assets/textures/8k_stars.jpg";
+import sunTextureImage from "./assets/textures/8k_sun.jpg";
+import mercuryTextureImage from "./assets/textures/mercurymap.jpg";
+import venusTextureImage from "./assets/textures/8k_venus.jpg";
+import earthTextureImage from "./assets/textures/8k_earth_daymap.jpg";
+import earthCloudTextureImage from "./assets/textures/8k_earth_clouds.jpg";
+import earthLightTextureImage from "./assets/textures/8k_earth_nightmap.jpg";
+import moonTextureImage from "./assets/textures/moonmap1k.jpg";
+import marsTextureImage from "./assets/textures/8k_mars.jpg";
+import jupiterTextureImage from "./assets/textures/8k_jupiter.jpg";
+import saturnTextureImage from "./assets/textures/8k_saturn.jpg";
+import uranusTextureImage from "./assets/textures/2k_uranus.jpg";
+import neptuneTextureImage from "./assets/textures/2k_neptune.jpg";
+import plutoTextureImage from "./assets/textures/plutomap1k.jpg";
+
+// import astroideModelScene from "./assets/models/astroide/scene.gltf";
+const astroideModelScene = "/astroide/scene.gltf";
+// const astroideModelScene = "";
+
 // textures
 const textureLoader = new THREE.TextureLoader();
-const starTexture = textureLoader.load("./src/assets/textures/8k_stars.jpg");
-const sunTexture = textureLoader.load("./src/assets/textures/8k_sun.jpg");
-const mercuryTexture = textureLoader.load("./src/assets/textures/mercurymap.jpg");
-const venusTexture = textureLoader.load("./src/assets/textures/8k_venus.jpg");
-const earthTexture = textureLoader.load("./src/assets/textures/8k_earth_daymap.jpg");
-const earthCloudTexture = textureLoader.load("./src/assets/textures/8k_earth_clouds.jpg");
-const earthLightTexture = textureLoader.load("./src/assets/textures/8k_earth_nightmap.jpg");
-const moonTexture = textureLoader.load("./src/assets/textures/moonmap1k.jpg");
-const marsTexture = textureLoader.load("./src/assets/textures/8k_mars.jpg");
-const jupiterTexture = textureLoader.load("./src/assets/textures/8k_jupiter.jpg");
-const saturnTexture = textureLoader.load("./src/assets/textures/8k_saturn.jpg");
-const uranusTexture = textureLoader.load("./src/assets/textures/2k_uranus.jpg");
-const neptuneTexture = textureLoader.load("./src/assets/textures/2k_neptune.jpg");
-const plutoTexture = textureLoader.load("./src/assets/textures/plutomap1k.jpg");
+const starTexture = textureLoader.load(starTextureImage);
+const sunTexture = textureLoader.load(sunTextureImage);
+const mercuryTexture = textureLoader.load(mercuryTextureImage);
+const venusTexture = textureLoader.load(venusTextureImage);
+const earthTexture = textureLoader.load(earthTextureImage);
+const earthCloudTexture = textureLoader.load(earthCloudTextureImage);
+const earthLightTexture = textureLoader.load(earthLightTextureImage);
+const moonTexture = textureLoader.load(moonTextureImage);
+const marsTexture = textureLoader.load(marsTextureImage);
+const jupiterTexture = textureLoader.load(jupiterTextureImage);
+const saturnTexture = textureLoader.load(saturnTextureImage);
+const uranusTexture = textureLoader.load(uranusTextureImage);
+const neptuneTexture = textureLoader.load(neptuneTextureImage);
+const plutoTexture = textureLoader.load(plutoTextureImage);
 
 // models
 const loader = new GLTFLoader();
@@ -182,7 +201,7 @@ export const AstroBelt = async () => {
     const radius = 90;
 
     const astroideModel = await loader.loadAsync(
-        "./src/assets/models/astroide/scene.gltf",
+        astroideModelScene
     );
     // Iterate over each sphere
     for (let n = 0; n < numberOfRings; n += 1) {
@@ -226,7 +245,7 @@ export const JupiterGroup = () => {
     return jupiterGroup;
 }
 
-export const SaturnGroup = async() => {
+export const SaturnGroup = async () => {
     const saturnGroup = new THREE.Group();
     saturnGroup.position.set(-140, 0, 0);
 
@@ -248,7 +267,7 @@ export const SaturnGroup = async() => {
     ringGroup.position.set(0, -0.1, 0);
 
     const astroideModel = await loader.loadAsync(
-        "./src/assets/models/astroide/scene.gltf",
+        astroideModelScene
     );
 
     const radius = 5; // Radius of the ring
