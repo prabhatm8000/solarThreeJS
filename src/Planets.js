@@ -6,6 +6,7 @@ import starTextureImage from "./assets/textures/2k_stars.jpg";
 import sunTextureImage from "./assets/textures/2k_sun.jpg";
 import mercuryTextureImage from "./assets/textures/mercurymap.jpg";
 import venusTextureImage from "./assets/textures/venusmap.jpg";
+import venusAtmosphereTextureImage from "./assets/textures/2k_venus_atmosphere.jpg";
 import earthTextureImage from "./assets/textures/2k_earth_daymap.jpg";
 import earthCloudTextureImage from "./assets/textures/2k_earth_clouds.jpg";
 import earthLightTextureImage from "./assets/textures/2k_earth_nightmap.jpg";
@@ -27,6 +28,7 @@ const starTexture = textureLoader.load(starTextureImage);
 const sunTexture = textureLoader.load(sunTextureImage);
 const mercuryTexture = textureLoader.load(mercuryTextureImage);
 const venusTexture = textureLoader.load(venusTextureImage);
+const venusAtmosphereTexture = textureLoader.load(venusAtmosphereTextureImage);
 const earthTexture = textureLoader.load(earthTextureImage);
 const earthCloudTexture = textureLoader.load(earthCloudTextureImage);
 const earthLightTexture = textureLoader.load(earthLightTextureImage);
@@ -108,6 +110,15 @@ export const VenusGroup = () => {
 
     const venusMesh = new THREE.Mesh(geometry, material);
     venusGroup.add(venusMesh);
+
+    const atmosphereMaterial = new THREE.MeshPhongMaterial({
+        map: venusAtmosphereTexture,
+        blending: THREE.AdditiveBlending,
+        opacity: 0.4,
+    });
+    const atmosphereMesh = new THREE.Mesh(geometry, atmosphereMaterial);
+    atmosphereMesh.scale.set(1.02, 1.02, 1.02);
+    venusGroup.add(atmosphereMesh);
 
     const glowMaterial = getGlow({ facingHex: 0xD2A05E, scale: 4 });
     const glowMesh = new THREE.Mesh(geometry, glowMaterial);
@@ -301,6 +312,9 @@ export const UranusGroup = async () => {
 
     const material = new THREE.MeshPhongMaterial({
         map: uranusTexture,
+        emissive: 0xB1E4EB,
+        // emissiveMap: uranusTexture,
+        emissiveIntensity: 0.005,
     });
 
     const uranusMesh = new THREE.Mesh(geometry, material);

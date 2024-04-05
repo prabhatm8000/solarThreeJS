@@ -69,7 +69,7 @@ loadingModelsAndObjects().then(() => {
     const loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.style.display = 'none';
 
-    planets.position.set(0, -100, 0);
+    planets.position.set(0, -140, 0);
     scene.add(planets);
 
     const light = new THREE.AmbientLight(0xffbf00, 0.05);
