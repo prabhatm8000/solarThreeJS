@@ -1,7 +1,7 @@
 Three.js solar model.
 
 Demo
-[Click here]()
+[Click here](https://solarthreejs.vercel.app/)
 
 [UI sample](./sampleImages)
 
